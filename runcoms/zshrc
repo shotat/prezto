@@ -11,3 +11,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+# alias
+alias vim="nvim"
+
+# env
+eval "$(rbenv init -)"
+export GOPATH=$HOME/go/third-party:$HOME/go/my-project
