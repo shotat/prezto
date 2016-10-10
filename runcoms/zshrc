@@ -10,17 +10,19 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+if [ -f $(brew --prefix)/etc/brew-wrap ];then
+  source $(brew --prefix)/etc/brew-wrap
+fi
 # Customize to your needs...
 
 # alias
 alias vim="nvim"
+alias ctags="`brew --prefix`/bin/ctags"
+alias be='bundle exec'
 
 # env
 eval "$(rbenv init -)"
 export GOPATH=$HOME/go/third-party:$HOME/go/my-project
-
-export NVM_DIR="/Users/vv001835/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 function peco-history-selection() {
     BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
@@ -35,3 +37,6 @@ bindkey '^R' peco-history-selection
 
 # eval $(docker-machine env)
 eval "$(pyenv init -)"
+
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"
