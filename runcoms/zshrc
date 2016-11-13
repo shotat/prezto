@@ -16,13 +16,17 @@ fi
 # Customize to your needs...
 
 # alias
+alias vim8="/usr/local/Cellar/vim/8.0.0055/bin/vim"
 alias vim="nvim"
 alias ctags="`brew --prefix`/bin/ctags"
 alias be='bundle exec'
 
 # env
 eval "$(rbenv init -)"
-export GOPATH=$HOME/go/third-party:$HOME/go/my-project
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 function peco-history-selection() {
     BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
