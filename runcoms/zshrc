@@ -10,10 +10,14 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# Customize to your needs...
 if [ -f $(brew --prefix)/etc/brew-wrap ];then
   source $(brew --prefix)/etc/brew-wrap
 fi
-# Customize to your needs...
+
+if [[ -d '/Volumes/Transcend' ]]; then
+  export HOMEBREW_CACHE='/Volumes/Transcend/Caches/Homebrew'
+fi
 
 # alias
 alias vim8="/usr/local/Cellar/vim/8.0.0055/bin/vim"
