@@ -35,8 +35,8 @@ zstyle ':prezto:load' pmodule \
   'osx' \
   'homebrew' \
   'syntax-highlighting' \
-  'prompt'
-
+  'prompt' \
+  'zshmarks'
 #
 # Autosuggestions
 #

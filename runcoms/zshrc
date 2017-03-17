@@ -32,6 +32,29 @@ export PATH=$PATH:$GOPATH/bin
 
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
+# zshmarks
+peco_change_directory() {
+  directory_alias=$(showmarks | peco | awk '{print $1}')
+  if test -n "${directory_alias}"; then
+    jump "${directory_alias}"
+    return 0
+  fi
+  return 1
+}
+
+peco_delete_bookmark() {
+  directory_alias=$(showmarks | peco | awk '{print $1}')
+  if test -n "${directory_alias}"; then
+    deletemark "${directory_alias}"
+    return 0
+  fi
+  return 1
+}
+
+alias cdd=peco_change_directory
+alias dbm=peco_delete_bookmark
+alias bm=bookmark
+
 function peco-history-selection() {
     BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
     CURSOR=$#BUFFER
@@ -48,3 +71,6 @@ eval "$(pyenv init -)"
 
 export NVM_DIR="$HOME/.nvm"
 . "$(brew --prefix nvm)/nvm.sh"
+
+eval "$(scalaenv init -)"
+# export PATH="${HOME}/.scalaenv/bin:${PATH}"
