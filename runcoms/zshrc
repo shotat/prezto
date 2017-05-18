@@ -25,6 +25,9 @@ alias vim="nvim"
 alias ctags="`brew --prefix`/bin/ctags"
 alias be='bundle exec'
 
+alias rlogin='sh ~/.rlogin.sh'
+export PKG_CONFIG_PATH=/usr/local/opt/imagemagick@6/lib/pkgconfig
+
 # env
 eval "$(rbenv init -)"
 export GOPATH=$HOME/go
