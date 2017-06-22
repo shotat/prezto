@@ -54,9 +54,17 @@ peco_delete_bookmark() {
   return 1
 }
 
-alias cdd=peco_change_directory
+function peco-src () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    cd "${selected_dir}"
+  fi
+}
+
+alias cdd=peco-src
 alias dbm=peco_delete_bookmark
 alias bm=bookmark
+
 
 function peco-history-selection() {
     BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
