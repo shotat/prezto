@@ -30,7 +30,7 @@ export PKG_CONFIG_PATH=/usr/local/opt/imagemagick@6/lib/pkgconfig
 
 # env
 eval "$(rbenv init -)"
-export GOPATH=$HOME/go
+export GOPATH=$HOME/dev
 export PATH=$PATH:$GOPATH/bin
 
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
