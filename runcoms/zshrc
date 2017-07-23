@@ -35,35 +35,16 @@ export PATH=$PATH:$GOPATH/bin
 
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
-# zshmarks
-peco_change_directory() {
-  directory_alias=$(showmarks | peco | awk '{print $1}')
-  if test -n "${directory_alias}"; then
-    jump "${directory_alias}"
-    return 0
-  fi
-  return 1
-}
-
-peco_delete_bookmark() {
-  directory_alias=$(showmarks | peco | awk '{print $1}')
-  if test -n "${directory_alias}"; then
-    deletemark "${directory_alias}"
-    return 0
-  fi
-  return 1
-}
-
+bindkey '^]' peco-src
 function peco-src () {
-  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
-  if [ -n "$selected_dir" ]; then
-    cd "${selected_dir}"
+  local src=$( ghq list --full-path | peco --query "$LBUFFER")
+  if [ -n "$src" ]; then
+    BUFFER="cd $src"
+    zle accept-line
   fi
+  zle -R -c
 }
-
-alias cdd=peco-src
-alias dbm=peco_delete_bookmark
-alias bm=bookmark
+zle -N peco-src
 
 
 function peco-history-selection() {
