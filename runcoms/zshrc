@@ -39,6 +39,7 @@ export GOPATH=$HOME/dev
 export PATH=$PATH:$GOPATH/bin
 # for python
 export PIPENV_VENV_IN_PROJECT=true
+export PATH=$PATH:~/.poetry/bin
 
 
 bindkey '^]' peco-src
