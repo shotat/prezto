@@ -72,3 +72,5 @@ export PATH="$PATH:/Users/shotat/.local/bin"
 
 # Docker
 export PATH="$PATH:/Users/shotat/.docker/bin"
+
+zstyle :prompt:pure:prompt:success color white
