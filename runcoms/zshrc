@@ -12,7 +12,7 @@ fi
 
 # $(brew --prefix) is too slow!
 # brew_prefix="$(brew --prefix)"
-brew_prefix='/usr/local'
+brew_prefix='/opt/homebrew'
 
 # Customize to your needs...
 if [ -f ${brew_prefix}/etc/brew-wrap ];then
@@ -34,6 +34,10 @@ export PATH=$PATH:$GOPATH/bin
 export PIPENV_VENV_IN_PROJECT=true
 export PATH=$PATH:~/.poetry/bin
 
+# for zlib
+export LDFLAGS="-L${brew_prefix}/opt/zlib/lib"
+export CPPFLAGS="-I${brew_prefix}/opt/zlib/include"
+export PKG_CONFIG_PATH="${brew_prefix}/opt/zlib/lib/pkgconfig"
 
 bindkey '^]' peco-src
 function peco-src () {
@@ -69,3 +73,11 @@ if [ -f '/Users/vv001835/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/
 
 # !profiler
 # zmodload zsh/zprof && zprof
+
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
+# Created by `pipx` on 2024-04-30 04:25:53
+export PATH="$PATH:/Users/shotat/.local/bin"
+
+# Docker
+export PATH="$PATH:/Users/shotat/.docker/bin"
